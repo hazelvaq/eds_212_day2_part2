@@ -10,6 +10,7 @@ library(palmerpenguins)
 ```
 
 ## Plotting functions in ggplot2
+
 ```{r}
 fx = function(x){
   3*x^2+4
@@ -23,10 +24,38 @@ ggplot(data.frame(x = c(1,100)),aes(x = x) ) + geom_function(fun = fx)
 ```
 
 ##Partial derivative
+
 ```{r}
 fxyz = expression(2*x*y + 3*(x^2) * (z^3))
 dfdy = D(fxyz,'y')
 dfdy
 ```
-##
 
+## Penguin plot
+
+Use view to look up a data frame
+
+Body mass on x and flippers on y Can also just list the titles of the columns
+
+```{r}
+ggplot(data = penguins, aes(x = penguins$body_mass_g, y = penguins$flipper_length_mm)) + geom_point() +labs(x = "Flipper length (mm",
+    y = "Body mass (g)", title = "Palmers penguins dimensions")
+```
+
+Change the color of data
+
+```{r}
+ggplot(data = penguins, aes(x = penguins$body_mass_g, y = penguins$flipper_length_mm, color = 'purple')) + geom_point() +labs(x = "Flipper length (mm",
+    y = "Body mass (g)", title = "Palmers penguins dimensions")
+```
+
+Change color by species color = species
+
+AES if changing a variable for chart aesthetics (ex.species)
+
+If changing based on a constant then it should be outside of AES Can also change the theme by adding theme\_....
+
+```{r}
+ggplot(data = penguins, aes(x = penguins$body_mass_g, y = penguins$flipper_length_mm, color = species)) + geom_point() +labs(x = "Flipper length (mm",
+    y = "Body mass (g)", title = "Palmers penguins dimensions") + theme_classic()
+```
