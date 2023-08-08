@@ -2,10 +2,31 @@
 title: "eds_212_day2_part2"
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
 ```{r}
-1 + 1
+library(tidyverse)
+library(palmerpenguins)
+
+
 ```
+
+## Plotting functions in ggplot2
+```{r}
+fx = function(x){
+  3*x^2+4
+}
+#Geom function mark
+# Just 1 and 100 in the data frame
+#Create a vector with multiple elements using c()
+#AES aethetic mapping x = x because the data frame only has two x variables
+ggplot(data.frame(x = c(1,100)),aes(x = x) ) + geom_function(fun = fx)
+
+```
+
+##Partial derivative
+```{r}
+fxyz = expression(2*x*y + 3*(x^2) * (z^3))
+dfdy = D(fxyz,'y')
+dfdy
+```
+##
+
